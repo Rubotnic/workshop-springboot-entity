@@ -47,7 +47,6 @@ class AppUserDaoTest {
     void setUp() {
 
         List<AppUser> persistedAppUsers = appUsers().stream().map(entityManager::persist).collect(Collectors.toList());
-
         testObject = persistedAppUsers.get(0);
     }
 
@@ -61,7 +60,6 @@ class AppUserDaoTest {
     void findAll() {
 
         Collection<AppUser> found = appUserDao.findAll();
-
         assertNotNull(found);
         assertEquals(2, found.size());
     }
@@ -70,9 +68,7 @@ class AppUserDaoTest {
     void create() {
 
         AppUser appUser = new AppUser("usernamn2", "losenpass2", new Details("mail2@mail.com", "Stefan Stefansson", LocalDate.parse("2022-11-11")));
-
         AppUser presistedUser = appUserDao.create(appUser);
-
         assertNotNull(presistedUser);
         assertNotEquals(0, presistedUser.getAppUserId());
         assertNotNull(entityManager.find(AppUser.class, presistedUser.getAppUserId()));
@@ -86,9 +82,7 @@ class AppUserDaoTest {
     void delete() {
 
         assertNotNull(entityManager.find(AppUser.class, testObject.getAppUserId()));
-
         appUserDao.delete(testObject.getAppUserId());
-
         assertNull(entityManager.find(AppUser.class, testObject.getAppUserId()));
     }
 }
