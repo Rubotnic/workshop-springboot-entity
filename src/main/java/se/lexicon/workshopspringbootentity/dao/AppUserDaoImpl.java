@@ -22,7 +22,7 @@ public class AppUserDaoImpl implements AppUserDao{
     @Transactional
     @Override
     public Collection<AppUser> findAll() {
-        return entityManager.createQuery("SELECT appUser FROM AppUser appuser", AppUser.class).getResultList();
+        return entityManager.createQuery("SELECT appuser FROM AppUser appuser", AppUser.class).getResultList();
     }
 
     @Transactional(rollbackFor = RuntimeException.class)

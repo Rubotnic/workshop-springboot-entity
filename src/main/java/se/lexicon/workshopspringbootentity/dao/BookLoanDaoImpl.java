@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @Repository
-public class BookLoanImpl implements BookLoanDao{
+public class BookLoanDaoImpl implements BookLoanDao{
 
     @PersistenceContext
     EntityManager entityManager;
